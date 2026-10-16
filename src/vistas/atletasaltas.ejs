@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Alta de atletas</title>
 </head>
 <body>
+<<<<<<< HEAD
    <form action="/atletas" method="POST">
     <input type="text" name="nombre" placeholder="Nombre">
     <input type="text" name="genero" placeholder="Genero">
@@ -16,6 +17,33 @@
    </form>
 
 <p>si</p>
+=======
+    <h1>Alta de atletas</h1>
+    <% if (error) { %>
+        <p role="alert"><%= error %></p>
+    <% } %>
+    <form action="/atletas/atletasaltas" method="post">
+        <label for="idAtletas">ID:</label>
+        <input id="idAtletas" name="idAtletas" type="number" min="1" required value="<%= datos.idAtletas ?? '' %>">
+>>>>>>> 83bf0349d410734a1afb121d55201dd7279834cd
 
+        <label for="nombre">Nombre:</label>
+        <input id="nombre" name="nombre" type="text" maxlength="45" required value="<%= datos.nombre ?? '' %>">
+
+        <label for="genero">Género:</label>
+        <input id="genero" name="genero" type="text" maxlength="45" required value="<%= datos.genero ?? '' %>">
+
+        <label for="edad">Edad:</label>
+        <input id="edad" name="edad" type="number" min="1" required value="<%= datos.edad ?? '' %>">
+
+        <label for="altura">Altura:</label>
+        <input id="altura" name="altura" type="number" min="0.01" step="0.01" required value="<%= datos.altura ?? '' %>">
+
+        <label for="peso">Peso:</label>
+        <input id="peso" name="peso" type="number" min="0.01" step="0.01" required value="<%= datos.peso ?? '' %>">
+
+        <button type="submit">Guardar atleta</button>
+    </form>
+    <p><a href="/atletas">Volver a atletas</a></p>
 </body>
 </html>
