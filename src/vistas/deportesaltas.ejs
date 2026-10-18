@@ -1,11 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <p>funciona deporte altas</p>
-</body>
-</html>
+<h1>Alta de deportes</h1>
+<a href="/deportes">Volver a deportes</a>
+<br><br>
+
+<form action="/deportes/altasalta" method="POST">
+    <label>ID:</label>
+    <input type="number" name="idhtml" required><br><br>
+
+    <label>Nombre del Deporte:</label>
+    <input type="text" name="nombrehtml" required><br><br>
+
+    <button type="submit">Guardar Deporte</button>
+</form>
