@@ -22,7 +22,11 @@ app.use(express.urlencoded({extended:true}));
 //renderiza el servidor
 //Rutas de la paginas 
 import {Rinicio} from './rutas/rutaInicio.js'
+import {Ratleta} from './rutas/rutaAtleta.js';
+
 app.use(Rinicio);
+app.use(Ratleta);
+
 
 
 //inicia el servidor

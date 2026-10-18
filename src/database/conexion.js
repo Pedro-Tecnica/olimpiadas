@@ -3,10 +3,10 @@ import mysql from 'mysql2/promise'
 export async function conectar(){
     try{
         const bdd= await mysql.createPool({
-            host:process.env.DB_HOST || 'localhost',
-            database:process.env.DB_NAME || 'olimpiadas',
-            user:process.env.DB_USER || 'root',
-            password:process.env.DB_PASSWORD
+            host:'localhost',
+            database:'olimpiadas',
+            user:'root',
+            password:'Kapejo250830'
         })
         console.log('conectado')
         return bdd;

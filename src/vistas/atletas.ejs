@@ -27,44 +27,10 @@
         <li><a href="/atletas/atletasaltas">altas</a></li>
         <li><button id="modificarAtletas">Modificar Atletas</button></li>
         <li><button id="consultarAtletas">Consultar Atletas</button></li>
-<<<<<<< HEAD
         <li><a href="/atletas/mostrarTodos" id="mostrarTodos">Mostrar Todos</a></li>
-=======
-        <li><a id="mostrarTodos" href="/atletas">Mostrar Todos</a></li>
->>>>>>> 83bf0349d410734a1afb121d55201dd7279834cd
 
     </ul>
 </nav>
-
-<% if (alta) { %>
-    <p role="status">Atleta guardado correctamente.</p>
-<% } %>
-
-<h2>Atletas registrados</h2>
-<table>
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Nombre</th>
-            <th>Género</th>
-            <th>Edad</th>
-            <th>Altura</th>
-            <th>Peso</th>
-        </tr>
-    </thead>
-    <tbody>
-        <% for (const atleta of registros) { %>
-            <tr>
-                <td><%= atleta.idAtletas %></td>
-                <td><%= atleta.nombre %></td>
-                <td><%= atleta.genero %></td>
-                <td><%= atleta.edad %></td>
-                <td><%= atleta.altura %></td>
-                <td><%= atleta.peso %></td>
-            </tr>
-        <% } %>
-    </tbody>
-</table>
 
 </div>
 

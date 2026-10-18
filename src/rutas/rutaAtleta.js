@@ -7,10 +7,15 @@ Ratleta.get('/atletas', (req, res) => {
 Ratleta.get('/atletas/atletasaltas', (req, res) => {
     res.render('atletasaltas');
 });
+
 //Rat.get('/cliente/clibaja',cbaja)
 //Rclientes.get('/cliente/climod',cmod)
 //Rclientes.get('/cliente/clicons',ccons)
-//Rclientes.get('/cliente/climostrar',cmt)
+
+Ratleta.get('/atletas/mostrarTodos', (peq, res) => {
+    res.render('atletasmostrar');
+});
+
 //Rclientes.post('/cliente/clinuevo',clinvo)
 
 export{Ratleta}; 
