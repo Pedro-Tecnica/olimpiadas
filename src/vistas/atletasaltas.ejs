@@ -7,30 +7,7 @@
 </head>
 <body>
     <h1>Alta de atletas</h1>
-    <% if (error) { %>
-        <p role="alert"><%= error %></p>
-    <% } %>
-    <form action="/atletas/atletasaltas" method="post">
-        <label for="idAtletas">ID:</label>
-        <input id="idAtletas" name="idAtletas" type="number" min="1" required value="<%= datos.idAtletas ?? '' %>">
-
-        <label for="nombre">Nombre:</label>
-        <input id="nombre" name="nombre" type="text" maxlength="45" required value="<%= datos.nombre ?? '' %>">
-
-        <label for="genero">Género:</label>
-        <input id="genero" name="genero" type="text" maxlength="45" required value="<%= datos.genero ?? '' %>">
-
-        <label for="edad">Edad:</label>
-        <input id="edad" name="edad" type="number" min="1" required value="<%= datos.edad ?? '' %>">
-
-        <label for="altura">Altura:</label>
-        <input id="altura" name="altura" type="number" min="0.01" step="0.01" required value="<%= datos.altura ?? '' %>">
-
-        <label for="peso">Peso:</label>
-        <input id="peso" name="peso" type="number" min="0.01" step="0.01" required value="<%= datos.peso ?? '' %>">
-
-        <button type="submit">Guardar atleta</button>
-    </form>
+    
     <p><a href="/atletas">Volver a atletas</a></p>
 </body>
 </html>

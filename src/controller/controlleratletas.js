@@ -11,7 +11,7 @@ export const mostrarAtletas= async (peq,resp)=>{
         let mostrarsql="SELECT idAtletas,nombre,genero,edad, altura,peso from atletas order by idAtletas";
         const[registros]= await bdd.query(mostrarsql)
         console.log(registros)
-        resp.render('resultadostodos',{registros});
+       resp.render('atletas', { registros });
     }
     catch(error){
         console.log(error);
