@@ -1,0 +1,27 @@
+<h1>Atletas registrados</h1>
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Género</th>
+            <th>Edad</th>
+            <th>Altura</th>
+            <th>Peso</th>
+        </tr>
+    </thead>
+    <tbody>
+      
+        <% for (const atleta of registros) { %>
+            <tr>
+                <td><%= atleta.idAtletas %></td>
+                <td><%= atleta.nombre %></td>
+                <td><%= atleta.genero %></td>
+                <td><%= atleta.edad %></td>
+                <td><%= atleta.altura %></td>
+                <td><%= atleta.peso %></td>
+            </tr>
+        <% } %>
+    </tbody>
+</table>
