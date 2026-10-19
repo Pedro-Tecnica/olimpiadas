@@ -31,3 +31,19 @@ export const altaAtleta = async (peq, resp) => {
         console.log(`error la sentencia insert ${error}`);
     }
 }
+
+export const eliminarAtleta = async (peq, resp) => {
+
+    let id = peq.body.idhtml;
+    console.log(`ID del atleta a eliminar: ${id}`);
+
+    let Eliminarsql = "DELETE FROM atletas WHERE idAtletas = '"+ id +"';";
+    
+    try {
+        const[registros] = await bdd.query(Eliminarsql);
+        console.log(registros);
+        resp.render('index');
+    } catch(error) {
+        console.log(`error la sentencia delete ${error}`);
+    }
+}
