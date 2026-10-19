@@ -35,7 +35,6 @@ export const altaAtleta = async (peq, resp) => {
 export const eliminarAtleta = async (peq, resp) => {
 
     let id = peq.body.idhtml;
-    console.log(`ID del atleta a eliminar: ${id}`);
 
     let Eliminarsql = "DELETE FROM atletas WHERE idAtletas = '"+ id +"';";
     
