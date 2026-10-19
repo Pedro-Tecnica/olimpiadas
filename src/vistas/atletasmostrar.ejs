@@ -1,21 +1,27 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/src/visuales/estilos.css">
-    <title>Olimpiadas</title>
-</head>
-<body>
+<h1>Atletas registrados</h1>
 
-    <div class="contenedor">
-
-
-        <li><a href="/atletas">Volver</a></li>
-
-    </div>
-
-    <script src="../index.js"></script>
-
-</body>
-</html>
+<table border="1">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Género</th>
+            <th>Edad</th>
+            <th>Altura</th>
+            <th>Peso</th>
+        </tr>
+    </thead>
+    <tbody>
+      
+        <% for (const atleta of registros) { %>
+            <tr>
+                <td><%= atleta.idAtletas %></td>
+                <td><%= atleta.nombre %></td>
+                <td><%= atleta.genero %></td>
+                <td><%= atleta.edad %></td>
+                <td><%= atleta.altura %></td>
+                <td><%= atleta.peso %></td>
+            </tr>
+        <% } %>
+    </tbody>
+</table>

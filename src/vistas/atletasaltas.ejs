@@ -1,21 +1,26 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-   <form action="/atletas" method="POST">
-    <input type="text" name="nombre" placeholder="Nombre">
-    <input type="text" name="genero" placeholder="Genero">
-    <input type="text" name="edad" placeholder="Edad">
-    <input type="text" name="estatura" placeholder="Estatura">
-    <input type="text" name="peso" placeholder="Peso">
-    <button type="submit">Agregar Atleta</button>
-   </form>
+<h1>Alta de atletas</h1>
+<a href="/atletas">Volver a atletas</a>
 
-<p>si</p>
+<br><br>
 
-</body>
-</html>
+<form action="/atletas/altasalta" method="POST">
+    <label>ID:</label>
+    <input type="number" name="idhtml" required><br><br>
+
+    <label>Nombre:</label>
+    <input type="text" name="nomhtml" required><br><br>
+
+    <label>Género:</label>
+    <input type="text" name="generohtml" required><br><br>
+
+    <label>Edad:</label>
+    <input type="number" name="edadhtml" required><br><br>
+
+    <label>Altura:</label>
+    <input type="number" step="0.01" name="alturahtml" required><br><br>
+
+    <label>Peso:</label>
+    <input type="number" step="0.01" name="pesohtml" required><br><br>
+
+    <button type="submit">Guardar Atleta</button>
+</form>

@@ -2,54 +2,21 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Listado de Atletas</title>
-    <style>
-        body { font-family: Arial, sans-serif; background: #f4f4f4; }
-        h1 { text-align: center; color: #2c3e50; }
-        table {
-            border-collapse: collapse;
-            width: 80%;
-            margin: 20px auto;
-            background: white;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        th, td { border: 1px solid #ccc; padding: 10px; text-align: center; }
-        th { background: #2c3e50; color: white; }
-        tr:nth-child(even) { background: #f9f9f9; }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/visuales/estilos.css">
+    <title>Olimpiadas</title>
 </head>
 <body>
-    <h1>Listado de Atletas</h1>
 
-    <% if (registros && registros.length > 0) { %>
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nombre</th>
-                    <th>Género</th>
-                    <th>Edad</th>
-                    <th>Altura</th>
-                    <th>Peso</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% registros.forEach(a => { %>
-                    <tr>
-                        <td><%= a.idAtletas %></td>
-                        <td><%= a.nombre %></td>
-                        <td><%= a.genero %></td>
-                        <td><%= a.edad %></td>
-                        <td><%= a.altura %></td>
-                        <td><%= a.peso %></td>
-                    </tr>
-                <% }); %>
-            </tbody>
-        </table>
-    <% } else { %>
-        <p style="text-align:center; color:#c0392b;">
-            No hay atletas registrados.
-        </p>
-    <% } %>
+    <div class="contenedor">
+
+        <h1>OLIMPIADAS 2028</h1>
+        
+        <li><a href="/atletas/atletas">Atletas</a></li>
+        <li><a href="/deportes/deportes">Deportes</a></li>
+
+    </div>
+
+
 </body>
 </html>

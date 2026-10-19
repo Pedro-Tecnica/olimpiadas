@@ -1,21 +1,16 @@
-import express from 'express';
+import { mostrarAtletas, altaAtleta } from '../controller/controlleratletas.js'; 
+import express from "express";
 const Ratleta = express.Router();
 
-Ratleta.get('/atletas', (req, res) => {
-    res.render('atletas');
-});
-Ratleta.get('/atletas/atletasaltas', (req, res) => {
-    res.render('atletasaltas');
-});
 
-//Rat.get('/cliente/clibaja',cbaja)
-//Rclientes.get('/cliente/climod',cmod)
-//Rclientes.get('/cliente/clicons',ccons)
+Ratleta.get('/atletas', (req, res) => { res.render('atletas'); });
 
-Ratleta.get('/atletas/mostrarTodos', (peq, res) => {
-    res.render('atletasmostrar');
-});
 
-//Rclientes.post('/cliente/clinuevo',clinvo)
+Ratleta.get('/atletas/atletasaltas', (req, res) => { res.render('atletasaltas'); });
 
-export{Ratleta}; 
+
+Ratleta.post('/atletas/altasalta', altaAtleta);
+
+Ratleta.get('/atletas/mostrar', mostrarAtletas);
+
+export { Ratleta };
