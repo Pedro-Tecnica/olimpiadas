@@ -1,0 +1,21 @@
+<h1>Deportes registrados</h1>
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% for (const deporte of registros) { %>
+            <tr>
+                <td><%= deporte.idDeportes %></td>
+                <td><%= deporte.nombre %></td>
+            </tr>
+        <% } %>
+    </tbody>
+</table>
+
+<br>
+<a href="/deportes">Volver a deportes</a>

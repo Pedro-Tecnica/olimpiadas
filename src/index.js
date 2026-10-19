@@ -14,7 +14,9 @@ app.set('view engine', 'ejs');
 const directorio=path.dirname(fileURLToPath(import.meta.url));
 app.set('views', path.join(directorio, 'vistas'));
 console.log(directorio);
-app.use(express.static(path.join(directorio, 'public')));
+app.use(express.static(path.join(directorio, 'visuales2')));
+app.use('/img', express.static(path.join(directorio, 'img')));
+
 
 // para tomar datos de un formulario
 app.use(express.urlencoded({extended:true}));
