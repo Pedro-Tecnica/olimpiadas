@@ -5,8 +5,10 @@ const Rdeporte = express.Router();
 
 Rdeporte.get('/deportes', cmenuDeporte);
 Rdeporte.get('/deportes/deportesaltas', caltaDeporte);
-Rdeporte.get('/deportes/deporteseliminar', eliminarDeporte);
 Rdeporte.post('/deportes/altasalta', altaDeporte);
+
+Rdeporte.get('/deportes/deporteseliminar', (req, res) => { res.render('deporteseliminar'); });
+Rdeporte.post('/deportes/deporteseliminar', eliminarDeporte);
 Rdeporte.get('/deportes/mostrar', mostrarDeportes);
 
 export { Rdeporte };

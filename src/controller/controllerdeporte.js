@@ -35,10 +35,10 @@ export const altaDeporte = async (peq, resp) => {
         console.log(`error la sentencia insert ${error}`);
         resp.send("Error al guardar el deporte");
     }
-}
+};
 
 export const eliminarDeporte = async (peq, resp) => {
-    let id = peq.query.id;
+    let id = peq.body.idhtml;
     let eliminarSql = "DELETE FROM deportes WHERE idDeportes = '"+ id +"';";
 
     try {

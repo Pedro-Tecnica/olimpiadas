@@ -10,7 +10,15 @@
 
 <div class="contenedor">
         <img src="/img/i.png" class="banner">
-        <h1 class="tituloInicio">Atletas</h1>
+        <h1 class="tituloInicio">Deportes</h1>
         <a href="/"><img src="/img/LogoOli.png" alt="Logo de las Olimpiadas" class="logo"></a>
 
-        
+
+        <form action="/deportes/deporteseliminar" method="post" class="formulario">
+            <label for="id">ID del Deporte a eliminar:</label>
+            <input type="text" id="id" name="idhtml" required>
+            <button type="submit">Eliminar</button>
+        </form>
+</div>
+
+</body>
