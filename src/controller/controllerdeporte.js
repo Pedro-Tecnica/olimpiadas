@@ -50,3 +50,23 @@ export const eliminarDeporte = async (peq, resp) => {
         resp.send("Error al eliminar el deporte");
     }
 };
+
+export const cmodDeporte = (peq, resp) => {
+    resp.render('deportes/deportesmod');
+};
+
+export const modificarDeporte = async (peq, resp) => {
+    let id = peq.body.idhtml;
+    let nombre = peq.body.nombrehtml;
+
+    let Modsql = "UPDATE deportes SET nombre='"+ nombre +"' WHERE idDeportes='"+ id +"';";
+    
+    try {
+        const [registros] = await bdd.query(Modsql);
+        console.log(registros);
+        resp.render('index');
+    } catch (error) {
+        console.log(`error la sentencia update ${error}`);
+        resp.send("Error al modificar el deporte");
+    }
+}

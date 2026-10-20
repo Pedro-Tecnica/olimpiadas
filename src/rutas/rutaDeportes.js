@@ -1,5 +1,5 @@
 import express from "express";
-import { cmenuDeporte, caltaDeporte, mostrarDeportes, altaDeporte, eliminarDeporte } from "../controller/controllerdeporte.js";
+import { cmenuDeporte, caltaDeporte, mostrarDeportes, altaDeporte, eliminarDeporte,cmodDeporte,modificarDeporte} from "../controller/controllerdeporte.js";
 
 const Rdeporte = express.Router();
 
@@ -12,4 +12,6 @@ Rdeporte.get('/deportes/deporteseliminar', (req, res) => { res.render('deportes/
 Rdeporte.post('/deportes/deporteseliminar', eliminarDeporte);
 Rdeporte.get('/deportes/mostrar', mostrarDeportes);
 
+Rdeporte.get('/deportes/deportesmod', cmodDeporte);
+Rdeporte.post('/deportes/modificar', modificarDeporte);
 export { Rdeporte };
