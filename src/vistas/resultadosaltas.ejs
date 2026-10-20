@@ -1,0 +1,22 @@
+<h1>Alta de Resultados</h1>
+<a href="/resultados">Volver a resultados</a>
+<br><br>
+
+<form action="/resultado/resultadosnuevo" method="POST">
+    <label>ID de la Participación:</label>
+    <input type="number" name="idhtml" required><br><br>
+
+    <label>ID del Atleta:</label>
+    <input type="number" name="atletahtml" required><br><br>
+
+    <label>ID del Evento:</label>
+    <input type="number" name="eventohtml" required><br><br>
+
+    <label>Edición (ej: Tokio 2020):</label>
+    <input type="text" name="edicionhtml" required><br><br>
+
+    <label>Medalla (Oro, Plata, Bronce, o escribir NULL):</label>
+    <input type="text" name="medallahtml"><br><br>
+
+    <button type="submit">Guardar Resultado</button>
+</form>
