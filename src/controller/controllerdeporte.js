@@ -2,11 +2,11 @@ import { conectar } from "../database/conexion.js";
 const bdd = await conectar();
 
 export const cmenuDeporte = (peq, resp) => {
-    resp.render('deportes');
+    resp.render('deportes/deportes');
 };
 
 export const caltaDeporte = (peq, resp) => {
-    resp.render('deportesaltas');
+    resp.render('deportes/deportesaltas');
 };
 
 export const mostrarDeportes = async (peq, resp) => {
@@ -14,7 +14,7 @@ export const mostrarDeportes = async (peq, resp) => {
         let mostrarsql = "SELECT idDeportes, nombre FROM deportes order by idDeportes";
         const [registros] = await bdd.query(mostrarsql);
         console.log(registros);
-        resp.render('deportesmostrar', { registros });
+        resp.render('deportes/deportesmostrar', { registros });
     } catch (error) {
         console.log(error);
         resp.send("Error al mostrar deportes");

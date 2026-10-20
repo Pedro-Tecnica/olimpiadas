@@ -6,7 +6,7 @@ export const mostrarAtletas = async (peq, resp) => {
         const [registros] = await bdd.query(mostrarsql);
         console.log(registros);
     
-        resp.render('atletasmostrar', { registros }); 
+        resp.render('atletas/atletasmostrar', { registros }); 
     } catch (error) {
         console.log(error);
     }
