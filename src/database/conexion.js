@@ -6,7 +6,7 @@ export async function conectar(){
             host:'localhost',
             database:'olimpiadas',
             user:'root',
-            password:'Kapejo250830'
+            password:'1234'
         })
         console.log('conectado')
         return bdd;

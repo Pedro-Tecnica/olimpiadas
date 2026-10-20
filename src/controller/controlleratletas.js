@@ -2,7 +2,7 @@ import { conectar } from "../database/conexion.js";
 const bdd = await conectar();
 export const mostrarAtletas = async (peq, resp) => {
     try {
-        let mostrarsql = "SELECT idAtletas, nombre, genero, edad, altura, peso FROM atletas order by idAtletas";
+        let mostrarsql = "SELECT idAtletas, nombre, genero, edad, altura, peso, codigoISO FROM atletas order by idAtletas";
         const [registros] = await bdd.query(mostrarsql);
         console.log(registros);
     
@@ -19,9 +19,9 @@ export const altaAtleta = async (peq, resp) => {
     let edad = peq.body.edadhtml;
     let altura = peq.body.alturahtml; 
     let peso = peq.body.pesohtml; 
-
+     let pais = peq.body.paishtml;
     
-    let Altasql = "INSERT INTO atletas (idAtletas, nombre, genero, edad, altura, peso) VALUES ('"+ id +"','"+ nombre +"','"+ genero +"','"+ edad +"','"+ altura +"','"+ peso +"');";
+    let Altasql = "INSERT INTO atletas (idAtletas, nombre, genero, edad, altura, peso, codigoISO) VALUES ('"+ id +"','"+ nombre +"','"+ genero +"','"+ edad +"','"+ altura +"','"+ peso +"','"+ pais +"');";
     
     try {
         const[registros] = await bdd.query(Altasql);
