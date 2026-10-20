@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/estilos.css">
+    <title>Olimpiadas</title>
+</head>
+<body>
+
+    <div class="contenedor">
+        <img src="/img/i.png" class="banner">
+        <h1 class="tituloInicio">Todos Los Paises</h1>
+        <a href="/"><img src="/img/LogoOli.png" alt="Logo de las Olimpiadas" class="logo"></a>
+
+        <h1>Paises registrados</h1>
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>Iso</th>
+            <th>Nombre</th>
+            <th>Continente</th>
+        </tr>
+    </thead>
+    
+    <tbody>
+        <% for (const pais of registros) { %>
+            <tr>
+                <td><%= pais.codigoISO %></td>
+                <td><%= pais.nombre %></td>
+                <td><%= pais.continente %></td>
+            </tr>
+        <% } %>
+    </tbody>
+</table>
+
+
+<br>
+<a href="/paises">Volver a Paises</a>

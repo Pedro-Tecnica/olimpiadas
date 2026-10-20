@@ -1,11 +1,22 @@
 import express from "express";
-import {} from "../controller/controllerpaises.js";
+import {mostrarPaises, altaPais, eliminarPais} from "../controller/controllerpaises.js";
 
 const Rpais = express.Router();
 
 Rpais.get('/paises', (req, resp) => { 
-    resp.render('paises'); });
+    resp.render('paises/paises'); });
+
+Rpais.get('/paises/paisesmostrar', mostrarPaises);
+
+Rpais.get('/paises/paisesaltas', (req, resp) => {
+    resp.render('paises/paisesaltas');});
+
+Rpais.post('/paises/paisesaltas', altaPais);
+
+Rpais.get('/paises/paiseseliminar', (req, resp) => {
+    resp.render('paises/paiseseliminar');});
+
+Rpais.post('/paises/paiseseliminar', eliminarPais);
 
 
-
-export { Rpais };
+export {Rpais};
