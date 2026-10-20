@@ -1,6 +1,6 @@
 import express from "express";
 
-import { mostrarAtletas, altaAtleta, eliminarAtleta } from "../controller/controlleratletas.js"; 
+import { mostrarAtletas, altaAtleta, eliminarAtleta, modificarAtleta,cmodAtleta  } from "../controller/controlleratletas.js"; 
 
 const Ratleta = express.Router();
 
@@ -17,5 +17,8 @@ Ratleta.post('/atletas/atletaseliminar', eliminarAtleta);
 Ratleta.get('/atletas/atletasmostrar', (req, res) => { res.render('atletas/atletasmostrar'); });
 
 Ratleta.get('/atletas/mostrar', mostrarAtletas);
+
+Ratleta.get('/atletas/atletasmod', cmodAtleta);
+Ratleta.post('/atletas/modificar', modificarAtleta);
 
 export { Ratleta };

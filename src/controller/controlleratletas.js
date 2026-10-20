@@ -46,3 +46,29 @@ export const eliminarAtleta = async (peq, resp) => {
         console.log(`error la sentencia delete ${error}`);
     }
 }
+
+export const cmodAtleta = (peq, resp) => {
+    resp.render('atletas/atletasmod');
+};
+
+
+export const modificarAtleta = async (peq, resp) => {
+    let id = peq.body.idhtml;
+    let nombre = peq.body.nomhtml;
+    let genero = peq.body.generohtml;
+    let edad = peq.body.edadhtml;
+    let altura = peq.body.alturahtml;
+    let peso = peq.body.pesohtml;
+    let pais = peq.body.paishtml;
+
+    let Modsql = "UPDATE atletas SET nombre='"+ nombre +"', genero='"+ genero +"', edad='"+ edad +"', altura='"+ altura +"', peso='"+ peso +"', codigoISO='"+ pais +"' WHERE idAtletas='"+ id +"';";
+    
+    try {
+        const [registros] = await bdd.query(Modsql);
+        console.log(registros);
+        resp.render('index'); 
+    } catch (error) {
+        console.log(`error la sentencia update ${error}`);
+        resp.send("Error al modificar el atleta. Fijate si el país existe."); // Para que el navegador no se quede colgado
+  }
+}
