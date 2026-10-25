@@ -89,3 +89,4 @@ export const modificarAtleta = async (peq, resp) => {
         console.log(`error la sentencia select ${error}`);
     }
 };*/
+
