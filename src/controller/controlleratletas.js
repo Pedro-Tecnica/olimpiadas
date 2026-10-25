@@ -5,7 +5,6 @@ export const mostrarAtletas = async (peq, resp) => {
         let mostrarsql = "SELECT idAtletas, nombre, genero, edad, altura, peso, codigoISO FROM atletas order by idAtletas";
         const [registros] = await bdd.query(mostrarsql);
         console.log(registros);
-    
         resp.render('atletas/atletasmostrar', { registros }); 
     } catch (error) {
         console.log(error);
@@ -19,11 +18,14 @@ export const altaAtleta = async (peq, resp) => {
     let edad = peq.body.edadhtml;
     let altura = peq.body.alturahtml; 
     let peso = peq.body.pesohtml; 
-     let pais = peq.body.paishtml;
+    let pais = peq.body.paishtml;
     
     let Altasql = "INSERT INTO atletas (idAtletas, nombre, genero, edad, altura, peso, codigoISO) VALUES ('"+ id +"','"+ nombre +"','"+ genero +"','"+ edad +"','"+ altura +"','"+ peso +"','"+ pais +"');";
-    
     try {
+        if(codigoISO.length > 3){
+            alert("El código ISO no puede tener más de 3 caracteres.");
+            return;
+        }
         const[registros] = await bdd.query(Altasql);
         console.log(registros);
         resp.render('index'); 
@@ -46,3 +48,16 @@ export const eliminarAtleta = async (peq, resp) => {
         console.log(`error la sentencia delete ${error}`);
     }
 }
+
+
+/*export const consulta = (peq, resp) => {
+    let id = parseInt(peq.params.idhtml);
+    let consultarsql = "SELECT idAtletas, nombre, genero, edad, altura, peso, codigoISO FROM atletas WHERE idAtletas = '"+ id +"';";
+    
+    try {
+        const [registros] = await bdd.query(consultarsql);
+        console.log(registros);
+    } catch(error) {
+        console.log(`error la sentencia select ${error}`);
+    }
+};*/

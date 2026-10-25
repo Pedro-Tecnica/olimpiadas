@@ -7,7 +7,6 @@ Rdeporte.get('/deportes/deportesaltas', (req, res) => { res.render('deportes/dep
 Rdeporte.get('/deportes', cmenuDeporte);
 Rdeporte.get('/deportes/deportesaltas', caltaDeporte);
 Rdeporte.post('/deportes/altasalta', altaDeporte);
-
 Rdeporte.get('/deportes/deporteseliminar', (req, res) => { res.render('deportes/deporteseliminar'); });
 Rdeporte.post('/deportes/deporteseliminar', eliminarDeporte);
 Rdeporte.get('/deportes/mostrar', mostrarDeportes);
