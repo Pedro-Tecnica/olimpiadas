@@ -29,10 +29,6 @@ export const altaResultado = async (peq, resp) => {
     edicion = peq.body.edicionhtml;
     medalla = peq.body.medallahtml;
 
-<<<<<<< HEAD
-    
-=======
->>>>>>> 0e6be58d3f804e3c655b64d5c37de7bd4c0dfbba
     let Altasql = "INSERT INTO participaciones (idParticipacion, idAtleta, idEvento, edicion, medalla) VALUES ('"+ id +"','"+ atleta +"','"+ evento +"','"+ edicion +"','"+ medalla +"');";
     
     try {

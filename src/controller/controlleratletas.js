@@ -47,22 +47,8 @@ export const eliminarAtleta = async (peq, resp) => {
     } catch(error) {
         console.log(`error la sentencia delete ${error}`);
     }
-}
+};
 
-<<<<<<< HEAD
-
-/*export const consulta = (peq, resp) => {
-    let id = parseInt(peq.params.idhtml);
-    let consultarsql = "SELECT idAtletas, nombre, genero, edad, altura, peso, codigoISO FROM atletas WHERE idAtletas = '"+ id +"';";
-    
-    try {
-        const [registros] = await bdd.query(consultarsql);
-        console.log(registros);
-    } catch(error) {
-        console.log(`error la sentencia select ${error}`);
-    }
-};*/
-=======
 export const cmodAtleta = (peq, resp) => {
     resp.render('atletas/atletasmod');
 };
@@ -88,4 +74,18 @@ export const modificarAtleta = async (peq, resp) => {
         resp.send("Error al modificar el atleta. Fijate si el país existe."); // Para que el navegador no se quede colgado
   }
 }
->>>>>>> 0e6be58d3f804e3c655b64d5c37de7bd4c0dfbba
+
+
+
+
+/*export const consulta = (peq, resp) => {
+    let id = parseInt(peq.params.idhtml);
+    let consultarsql = "SELECT idAtletas, nombre, genero, edad, altura, peso, codigoISO FROM atletas WHERE idAtletas = '"+ id +"';";
+    
+    try {
+        const [registros] = await bdd.query(consultarsql);
+        console.log(registros);
+    } catch(error) {
+        console.log(`error la sentencia select ${error}`);
+    }
+};*/
