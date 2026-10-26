@@ -28,6 +28,18 @@ export const altaDeporte = async (peq, resp) => {
     let Altasql = "INSERT INTO deportes (idDeportes, nombre) VALUES ('"+ id +"','"+ nombre +"');";
     
     try {
+    const [ids] =await bdd.query("SELECT * FROM deportes WHERE idDeportes = ?", [id]);
+    if(ids.length > 0){
+    return resp.render('deportes/deportesaltas',{error:"El id ya existe."
+    });
+}
+
+    const [deportes] = await bdd.query("SELECT * FROM deportes WHERE nombre = ?", [nombre]);
+    if(deportes.length > 0){
+        return resp.render('deportes/deportesaltas',{error:"El deporte ya existe."
+    });
+}
+
         const [registros] = await bdd.query(Altasql);
         console.log(registros);
         resp.render('index'); 
@@ -59,9 +71,17 @@ export const modificarDeporte = async (peq, resp) => {
     let id = peq.body.idhtml;
     let nombre = peq.body.nombrehtml;
 
+    
     let Modsql = "UPDATE deportes SET nombre='"+ nombre +"' WHERE idDeportes='"+ id +"';";
     
     try {
+
+        const [ids] =await bdd.query("SELECT * FROM deportes WHERE idDeportes = ?", [id]);
+            if(ids.length == 0){
+            return resp.render('deportes/deportesmod',{error:"El Deporte no existe"
+            });
+            }
+
         const [registros] = await bdd.query(Modsql);
         console.log(registros);
         resp.render('index');

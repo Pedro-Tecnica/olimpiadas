@@ -105,6 +105,12 @@ if(pais.length > 3){
     let Modsql = "UPDATE atletas SET nombre='"+ nombre +"', genero='"+ genero +"', edad='"+ edad +"', altura='"+ altura +"', peso='"+ peso +"', codigoISO='"+ pais +"' WHERE idAtletas='"+ id +"';";
     
     try {
+            const [ids] =await bdd.query("SELECT * FROM atletas WHERE idAtletas = ?", [id]);
+            if(ids.length == 0){
+            return resp.render('atletas/atletasmod',{error:"El atleta no existe"
+            });
+            }
+
         const [registros] = await bdd.query(Modsql);
         console.log(registros);
         resp.render('index'); 
