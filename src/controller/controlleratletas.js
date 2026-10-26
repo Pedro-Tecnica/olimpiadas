@@ -19,13 +19,14 @@ export const altaAtleta = async (peq, resp) => {
     let altura = peq.body.alturahtml; 
     let peso = peq.body.pesohtml; 
     let pais = peq.body.paishtml;
-    
 
-
+if(pais.length > 3 || pais.length <= 2){
+    return resp.render('atletas/atletasaltas',{ error:"El código ISO no puede tener más de 3 caracteres."
+    });
+}
 
     let Altasql = "INSERT INTO atletas (idAtletas, nombre, genero, edad, altura, peso, codigoISO) VALUES ('"+ id +"','"+ nombre +"','"+ genero +"','"+ edad +"','"+ altura +"','"+ peso +"','"+ pais +"');";
     try {
-    
     
     const [ids] =await bdd.query("SELECT * FROM atletas WHERE idAtletas = ?", [id]);
     if(ids.length > 0){
@@ -33,10 +34,20 @@ export const altaAtleta = async (peq, resp) => {
     });
 }
 
-        if(pais.length > 3){
-            return resp.render('atletas/atletasaltas',{ error:"El código ISO no puede tener más de 3 caracteres."
-        });
-}
+    let validaciones = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ?\s]+$/;
+    if (!validaciones.test(nombre)) {
+        return resp.render('atletas/atletasaltas',{error:"Los nombres no pueden contener: Puntos, comas, guiones o numeros."
+            })
+    }
+
+    const [paises] =await bdd.query("SELECT * FROM atletas WHERE codigoISO = ?", [pais]);
+    if(paises.length === 0){
+    return resp.render('atletas/atletasaltas',{ error:"El codigo de este pais no existe."            
+    });
+
+    }
+
+
 
         const[registros] = await bdd.query(Altasql);
         console.log(registros);
@@ -55,6 +66,13 @@ export const eliminarAtleta = async (peq, resp) => {
     let Eliminarsql = "DELETE FROM atletas WHERE idAtletas = '"+ id +"';";
     
     try {
+
+    const [ids] =await bdd.query("SELECT * FROM atletas WHERE idAtletas = ?", [id]);
+        if(ids.length == 0){
+            return resp.render('atletas/atletaseliminar',{error:"El atleta no existe"
+            });
+        }
+
         const[registros] = await bdd.query(Eliminarsql);
         console.log(registros);
         resp.render('index');
@@ -79,7 +97,7 @@ export const modificarAtleta = async (peq, resp) => {
 
 
 if(pais.length > 3){
-            return resp.render('atletas/atletasmod',{ error:"El código ISO no puede tener más de 3 caracteres."
+            return resp.render('atletas/atletasmod',{ error:"El código ISO solo debe tener más de 3 caracteres."
         });
 }
 
