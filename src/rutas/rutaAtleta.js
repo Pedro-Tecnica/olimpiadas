@@ -1,6 +1,6 @@
 import express from "express";
 
-import { mostrarAtletas, altaAtleta, eliminarAtleta, modificarAtleta,cmodAtleta  } from "../controller/controlleratletas.js"; 
+import { mostrarAtletas, altaAtleta, eliminarAtleta, modificarAtleta,cmodAtleta,cmenuConsultas,consultaFemenino } from "../controller/controlleratletas.js"; 
 
 const Ratleta = express.Router();
 
@@ -20,5 +20,6 @@ Ratleta.get('/atletas/mostrar', mostrarAtletas);
 
 Ratleta.get('/atletas/atletasmod', cmodAtleta);
 Ratleta.post('/atletas/modificar', modificarAtleta);
-
+Ratleta.get('/atletas/consultas', cmenuConsultas);
+Ratleta.get('/atletas/consultagenero', consultaFemenino);
 export { Ratleta };

@@ -98,7 +98,25 @@ if(pais.length > 3){
 
 
 
+export const cmenuConsultas = (peq, resp) => {
+    resp.render('atletas/consultas');
+};
 
+
+export const consultaFemenino = async (peq, resp) => {
+    try {
+        // WHERE genero = 'femenino' 
+        let mostrarsql = "SELECT nombre, edad, codigoISO FROM atletas WHERE genero = 'femenino' ORDER BY nombre ASC";
+        
+        const [registros] = await bdd.query(mostrarsql);
+        console.log(registros);
+        
+        resp.render('atletas/atletasmostrar', { registros }); 
+    } catch (error) {
+        console.log(error);
+        resp.send("Error al mostrar la consulta");
+    }
+};
 /*export const consulta = (peq, resp) => {
     let id = parseInt(peq.params.idhtml);
     let consultarsql = "SELECT idAtletas, nombre, genero, edad, altura, peso, codigoISO FROM atletas WHERE idAtletas = '"+ id +"';";
