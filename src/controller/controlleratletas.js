@@ -20,18 +20,32 @@ export const altaAtleta = async (peq, resp) => {
     let peso = peq.body.pesohtml; 
     let pais = peq.body.paishtml;
     
+
+
+
     let Altasql = "INSERT INTO atletas (idAtletas, nombre, genero, edad, altura, peso, codigoISO) VALUES ('"+ id +"','"+ nombre +"','"+ genero +"','"+ edad +"','"+ altura +"','"+ peso +"','"+ pais +"');";
     try {
-        if(codigoISO.length > 3){
-            alert("El código ISO no puede tener más de 3 caracteres.");
-            return;
-        }
+    
+    
+    const [ids] =await bdd.query("SELECT * FROM atletas WHERE idAtletas = ?", [id]);
+    if(ids.length > 0){
+    return resp.render('atletas/atletasaltas',{error:"El atleta ya existe."
+    });
+}
+
+        if(pais.length > 3){
+            return resp.render('atletas/atletasaltas',{ error:"El código ISO no puede tener más de 3 caracteres."
+        });
+}
+
         const[registros] = await bdd.query(Altasql);
         console.log(registros);
         resp.render('index'); 
+        
     } catch(error) {
         console.log(`error la sentencia insert ${error}`);
     }
+
 }
 
 export const eliminarAtleta = async (peq, resp) => {
@@ -63,6 +77,13 @@ export const modificarAtleta = async (peq, resp) => {
     let peso = peq.body.pesohtml;
     let pais = peq.body.paishtml;
 
+
+if(pais.length > 3){
+            return resp.render('atletas/atletasmod',{ error:"El código ISO no puede tener más de 3 caracteres."
+        });
+}
+
+
     let Modsql = "UPDATE atletas SET nombre='"+ nombre +"', genero='"+ genero +"', edad='"+ edad +"', altura='"+ altura +"', peso='"+ peso +"', codigoISO='"+ pais +"' WHERE idAtletas='"+ id +"';";
     
     try {
@@ -71,7 +92,7 @@ export const modificarAtleta = async (peq, resp) => {
         resp.render('index'); 
     } catch (error) {
         console.log(`error la sentencia update ${error}`);
-        resp.send("Error al modificar el atleta. Fijate si el país existe."); // Para que el navegador no se quede colgado
+        return resp.send("Error al modificar el atleta. Fijate si el país existe."); 
   }
 }
 
