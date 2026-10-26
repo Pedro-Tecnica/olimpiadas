@@ -106,7 +106,7 @@ export const cmenuConsultas = (peq, resp) => {
 export const consultaFemenino = async (peq, resp) => {
     try {
         // WHERE genero = 'femenino' 
-        let mostrarsql = "SELECT nombre, edad, codigoISO FROM atletas WHERE genero = 'femenino' ORDER BY nombre ASC";
+         let mostrarsql = "SELECT idAtletas, nombre, genero, edad, altura, peso, codigoISO FROM atletas WHERE genero = 'femenino' ORDER BY nombre ASC";
         
         const [registros] = await bdd.query(mostrarsql);
         console.log(registros);
@@ -115,6 +115,21 @@ export const consultaFemenino = async (peq, resp) => {
     } catch (error) {
         console.log(error);
         resp.send("Error al mostrar la consulta");
+    }
+};
+
+
+export const consultaMayores30 = async (peq, resp) => {
+    try {
+
+        let mostrarsql = "SELECT idAtletas, nombre, genero, edad, altura, peso, codigoISO FROM atletas WHERE edad > 30";
+        
+        const [registros] = await bdd.query(mostrarsql);
+        console.log(registros);
+       
+        resp.render('atletas/atletasmostrar', { registros }); 
+    } catch (error) {
+        console.log(error);
     }
 };
 /*export const consulta = (peq, resp) => {
