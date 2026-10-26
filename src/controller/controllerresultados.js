@@ -39,3 +39,26 @@ export const altaResultado = async (peq, resp) => {
         console.log(`error la sentencia insert ${error}`);
     }
 }
+export const cmodResultado = (peq, resp) => {
+    resp.render('resultadosmod'); 
+};
+
+export const modificarResultado = async (peq, resp) => {
+    let id = peq.body.idhtml;
+    let atleta = peq.body.atletahtml;
+    let evento = peq.body.eventohtml;
+    let edicion = peq.body.edicionhtml;
+    let medalla = peq.body.medallahtml;
+
+    
+    let Modsql = "UPDATE participaciones SET idAtleta='"+ atleta +"', idEvento='"+ evento +"', edicion='"+ edicion +"', medalla='"+ medalla +"' WHERE idParticipacion='"+ id +"';";
+    
+    try {
+        const [registros] = await bdd.query(Modsql);
+        console.log(registros);
+        resp.render('index'); 
+    } catch (error) {
+        console.log(`error la sentencia update ${error}`);
+        resp.send("Error al modificar el resultado");
+    }
+}

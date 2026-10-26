@@ -1,0 +1,15 @@
+<h1>Modificar País</h1>
+<a href="/paises">Volver a países</a><br><br>
+
+<form action="/pais/modificar" method="POST">
+    <label>Código ISO del País a modificar (Ej: ARG):</label>
+    <input type="text" name="codigohtml" maxlength="3" required><br><br>
+
+    <label>Nuevo Nombre:</label>
+    <input type="text" name="nombrehtml" required><br><br>
+
+    <label>Nuevo Continente:</label>
+    <input type="text" name="continentehtml" required><br><br>
+
+    <button type="submit">Modificar País</button>
+</form>

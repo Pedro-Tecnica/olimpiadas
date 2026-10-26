@@ -42,3 +42,23 @@ export const eliminarPais = async (req, resp) => {
         console.log(`error la sentencia delete ${error}`);
     }
 };
+export const cmodPais = (peq, resp) => {
+    resp.render('paises/paisesmod');
+};
+
+export const modificarPais = async (peq, resp) => {
+    let codigo = peq.body.codigohtml;
+    let nombre = peq.body.nombrehtml;
+    let continente = peq.body.continentehtml;
+
+    let Modsql = "UPDATE paises SET nombre='"+ nombre +"', continente='"+ continente +"' WHERE codigoISO='"+ codigo +"';";
+    
+    try {
+        const [registros] = await bdd.query(Modsql);
+        console.log(registros);
+        resp.render('index');
+    } catch (error) {
+        console.log(`error la sentencia update ${error}`);
+        resp.send("Error al modificar el país");
+    }
+}

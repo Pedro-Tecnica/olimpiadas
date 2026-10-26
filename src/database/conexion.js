@@ -4,9 +4,9 @@ export async function conectar(){
     try{
         const bdd= await mysql.createPool({
             host:'localhost',
-            database:'olimpicos',
+            database:'olimpiadas',
             user:'root',
-            password:'Kapejo250830'
+            password:'1234'
         })
         console.log('conectado')
         return bdd;

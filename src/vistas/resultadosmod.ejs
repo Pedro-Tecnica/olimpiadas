@@ -1,0 +1,22 @@
+<h1>Modificar Resultado</h1>
+<a href="/resultados">Volver a resultados</a>
+<br><br>
+
+<form action="/resultado/modificar" method="POST">
+    <label>ID de la Participación a modificar:</label>
+    <input type="number" name="idhtml" required><br><br>
+
+    <label>Nuevo ID del Atleta:</label>
+    <input type="number" name="atletahtml" required><br><br>
+
+    <label>Nuevo ID del Evento:</label>
+    <input type="number" name="eventohtml" required><br><br>
+
+    <label>Nueva Edición (ej: Tokio 2020):</label>
+    <input type="text" name="edicionhtml" required><br><br>
+
+    <label>Nueva Medalla (Oro, Plata, Bronce o NULL):</label>
+    <input type="text" name="medallahtml"><br><br>
+
+    <button type="submit">Modificar Resultado</button>
+</form>
