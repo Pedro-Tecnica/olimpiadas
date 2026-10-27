@@ -26,6 +26,19 @@ export const altaPais = async (req, resp) => {
     let Altasql = "INSERT INTO paises (codigoISO, nombre, continente) VALUES ('"+ iso +"','"+ nombre +"','"+ continente +"');";
 
     try {
+
+        const [codigo] =await bdd.query("SELECT * FROM paises WHERE codigoISO = ?", [iso]);
+    if(codigo.length > 0){
+    return resp.render('paises/paisesaltas',{error:"El codigo ya existe."
+    });
+}
+
+    const [pais] = await bdd.query("SELECT * FROM paises WHERE nombre = ?", [nombre]);
+        if(pais.length > 0){
+        return resp.render('paises/paisesaltas',{error:"El pais ya existe."
+    });
+}
+
         const [registros] = await bdd.query(Altasql);
         console.log(registros);
         resp.render('index');
@@ -69,7 +82,14 @@ export const modificarPais = async (peq, resp) => {
 
     let Modsql = "UPDATE paises SET nombre='"+ nombre +"', continente='"+ continente +"' WHERE codigoISO='"+ codigo +"';";
     
-    try {
+    try {   
+
+        const [pais] = await bdd.query("SELECT * FROM paises WHERE nombre = ?", [nombre]);
+        if(pais.length > 0){
+        return resp.render('paises/paisesmod',{error:"El pais ya existe."
+    });
+}
+
         const [registros] = await bdd.query(Modsql);
         console.log(registros);
         resp.render('index');
