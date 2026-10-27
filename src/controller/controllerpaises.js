@@ -62,6 +62,11 @@ export const modificarPais = async (peq, resp) => {
     let nombre = peq.body.nombrehtml;
     let continente = peq.body.continentehtml;
 
+    if(codigo.length > 3 || codigo.length <= 2){
+    return resp.render('paises/paisesmod',{ error:"El código ISO no puede tener más de 3 caracteres."
+    });
+}
+
     let Modsql = "UPDATE paises SET nombre='"+ nombre +"', continente='"+ continente +"' WHERE codigoISO='"+ codigo +"';";
     
     try {

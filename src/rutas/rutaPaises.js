@@ -1,5 +1,5 @@
 import express from "express";
-import {mostrarPaises, altaPais, eliminarPais,cmodPais,modificarPais} from "../controller/controllerpaises.js";
+import {mostrarPaises, altaPais, eliminarPais, cmodPais, modificarPais} from "../controller/controllerpaises.js";
 
 const Rpais = express.Router();
 
