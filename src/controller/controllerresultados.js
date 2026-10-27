@@ -2,11 +2,11 @@ import { conectar } from "../database/conexion.js";
 const bdd = await conectar();
 
 export const cmenuResultado = (peq, resp) => {
-    resp.render('resultados');
+    resp.render('resultados/resultados');
 };
 
 export const caltaResultado = (peq, resp) => {
-    resp.render('resultadosaltas');
+    resp.render('resultados/resultadosaltas');
 };
 
 export const cmostrarResultados = async (peq, resp) => {
@@ -14,7 +14,7 @@ export const cmostrarResultados = async (peq, resp) => {
         let mostrarsql = "SELECT idParticipacion, idAtleta, idEvento, edicion, medalla FROM participaciones order by idParticipacion";
         const [registros] = await bdd.query(mostrarsql);
         console.log(registros);
-        resp.render('resultadosmostrar', { registros });
+        resp.render('resultados/resultadosmostrar', { registros });
     } catch (error) {
         console.log(error);
     }
@@ -40,7 +40,7 @@ export const altaResultado = async (peq, resp) => {
     }
 }
 export const cmodResultado = (peq, resp) => {
-    resp.render('resultadosmod'); 
+    resp.render('resultados/resultadosmod'); 
 };
 
 export const modificarResultado = async (peq, resp) => {
