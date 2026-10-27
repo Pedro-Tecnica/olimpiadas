@@ -54,6 +54,13 @@ export const eliminarDeporte = async (peq, resp) => {
     let eliminarSql = "DELETE FROM deportes WHERE idDeportes = '"+ id +"';";
 
     try {
+        const [ids] =await bdd.query("SELECT * FROM deportes WHERE idDeportes = ?", [id]);
+        if(ids.length == 0){
+            return resp.render('deportes/deporteseliminar',{error:"El id no existe"
+            });
+        }
+
+
         const [registros] = await bdd.query(eliminarSql);
         console.log(registros);
         resp.render('index');
@@ -78,9 +85,16 @@ export const modificarDeporte = async (peq, resp) => {
 
         const [ids] =await bdd.query("SELECT * FROM deportes WHERE idDeportes = ?", [id]);
             if(ids.length == 0){
-            return resp.render('deportes/deportesmod',{error:"El Deporte no existe"
+            return resp.render('deportes/deportesmod',{error:"El ID del Deporte no existe"
             });
             }
+
+        const [deportes] = await bdd.query("SELECT * FROM deportes WHERE nombre = ?", [nombre]);
+        if(deportes.length > 0){
+        return resp.render('deportes/deportesmod',{error:"El deporte ya existe."
+    });
+}
+
 
         const [registros] = await bdd.query(Modsql);
         console.log(registros);

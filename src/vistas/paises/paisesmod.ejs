@@ -1,7 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/estilos.css">
+    <title>Olimpiadas</title>
+</head>
+<body>
+
+<div class="contenedor">
+        <img src="/img/i.png" class="banner">
+        <h1 class="tituloInicio">Modificar Paises</h1>
+        <a href="/"><img src="/img/LogoOli.png" alt="Logo de las Olimpiadas" class="logo"></a>
+
+
 <h1>Modificar País</h1>
 <a href="/paises">Volver a países</a><br><br>
 
-<form action="/pais/modificar" method="POST">
+<form action="/paises/paisesmod" method="POST">
     <label>Código ISO del País a modificar (Ej: ARG):</label>
     <input type="text" name="codigohtml" maxlength="3" required><br><br>
 
@@ -13,3 +29,8 @@
 
     <button type="submit">Modificar País</button>
 </form>
+
+<% if (typeof error !== 'undefined') {%>
+    <%= error %>
+
+<% } %>

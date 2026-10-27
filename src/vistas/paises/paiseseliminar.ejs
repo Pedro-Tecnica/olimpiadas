@@ -19,3 +19,8 @@
             <input type="text" id="iso" name="isohtml" required>
             <button type="submit">Eliminar</button>
         </form>
+
+<% if (typeof error !== 'undefined') {%>
+    <%= error %>
+
+<% } %> 

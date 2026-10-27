@@ -18,6 +18,11 @@ export const altaPais = async (req, resp) => {
     let nombre = req.body.nomhtml;
     let continente = req.body.continentehtml;
 
+    if(iso.length > 3 || iso.length <= 2){
+    return resp.render('paises/paisesaltas',{ error:"El código ISO no puede tener más de 3 caracteres."
+    });
+}
+
     let Altasql = "INSERT INTO paises (codigoISO, nombre, continente) VALUES ('"+ iso +"','"+ nombre +"','"+ continente +"');";
 
     try {
@@ -35,6 +40,12 @@ export const eliminarPais = async (req, resp) => {
     let EliminarSql = "DELETE FROM paises WHERE codigoISO = '"+ iso +"';";
 
     try {
+        const [codigo] =await bdd.query("SELECT * FROM paises WHERE codigoISO = ?", [iso]);
+        if(codigo.length == 0){
+            return resp.render('paises/paiseseliminar',{error:"El Pais no existe"
+            });
+        }
+
         const [registros] = await bdd.query(EliminarSql);
         console.log(registros);
         resp.render('index');
