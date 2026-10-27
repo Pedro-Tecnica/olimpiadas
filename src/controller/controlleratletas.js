@@ -40,7 +40,7 @@ if(pais.length > 3 || pais.length <= 2){
             })
     }
 
-    const [paises] =await bdd.query("SELECT * FROM atletas WHERE codigoISO = ?", [pais]);
+    const [paises] =await bdd.query("SELECT * FROM paises WHERE codigoISO = ?", [pais]);
     if(paises.length === 0){
     return resp.render('atletas/atletasaltas',{ error:"El codigo de este pais no existe."            
     });
