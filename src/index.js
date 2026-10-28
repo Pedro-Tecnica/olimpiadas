@@ -31,7 +31,7 @@ app.use(Ratleta);
 
 
 
-//inicia el servidor
+
 app.listen(puerto,() => {
     console.log(`Servidor Iniciando ${puerto}`.blue);
 });

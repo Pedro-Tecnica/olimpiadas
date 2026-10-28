@@ -40,7 +40,7 @@ export const mostrarEventos = async (peq, resp) => {
         console.log(error);
     }
 };
-// --- MODIFICAR ---
+
 export const cmodEvento = (peq, resp) => {
     resp.render('eventos/eventosmod');
 };
@@ -62,7 +62,7 @@ export const modificarEvento = async (peq, resp) => {
     }
 }
 
-// --- ELIMINAR ---
+
 export const cbajaEvento = (peq, resp) => {
     resp.render('eventos/eventoeliminar');
 };

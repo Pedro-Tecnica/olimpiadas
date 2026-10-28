@@ -160,7 +160,7 @@ export const consultaMayores30 = async (peq, resp) => {
 };
 export const consultaPromediosGenero = async (peq, resp) => {
     try {
-        // Agrupamos por género y sacamos el promedio de altura y peso
+        
         let mostrarsql = "SELECT genero, ROUND(AVG(altura), 2) AS prom_altura, ROUND(AVG(peso), 2) AS prom_peso FROM atletas GROUP BY genero";
         
         const [registros] = await bdd.query(mostrarsql);
@@ -176,7 +176,7 @@ export const consultaPromediosGenero = async (peq, resp) => {
 
 export const consultaTotalPorPais = async (peq, resp) => {
     try {
-        // Contamos cuántos atletas hay por cada país y ordenamos de mayor a menor
+        
         let mostrarsql = "SELECT codigoISO, COUNT(*) AS total FROM atletas GROUP BY codigoISO ORDER BY total DESC";
         
         const [registros] = await bdd.query(mostrarsql);
@@ -187,14 +187,12 @@ export const consultaTotalPorPais = async (peq, resp) => {
 };
 export const consultaMultiplesOros = async (peq, resp) => {
     try {
-        // Agrupamos por atleta y edición.
-        // HAVING COUNT(...) > 1 significa: "Solo mostrame los que ganaron más de 1 oro".
+    
         let mostrarsql = "SELECT a.nombre AS atleta, p.edicion, COUNT(p.idParticipacion) AS cantidad_oros FROM atletas a JOIN participaciones p ON a.idAtletas = p.idAtleta WHERE p.medalla = 'Oro' GROUP BY a.idAtletas, p.edicion HAVING COUNT(p.idParticipacion) > 1";
         
         const [registros] = await bdd.query(mostrarsql);
         console.log(registros);
         
-        // Usamos una vista nueva (consulta10)
         resp.render('atletas/consulta10', { registros }); 
     } catch (error) {
         console.log(`error en la consulta 10: ${error}`);
@@ -203,13 +201,12 @@ export const consultaMultiplesOros = async (peq, resp) => {
 };
 export const consultaMedallasOro = async (peq, resp) => {
     try {
-        // Unimos Atletas con Participaciones (por idAtleta) y Eventos (por idEvento)
+
         let mostrarsql = "SELECT a.nombre AS atleta, p.edicion AS anio, e.nombre AS evento FROM atletas a JOIN participaciones p ON a.idAtletas = p.idAtleta JOIN eventos e ON p.idEvento = e.idEventos WHERE p.medalla = 'Oro'";
         
         const [registros] = await bdd.query(mostrarsql);
         console.log(registros);
-        
-        // Usamos una vista nueva (consulta7)
+  
         resp.render('atletas/consulta7', { registros }); 
     } catch (error) {
         console.log(`error en la consulta 7: ${error}`);
@@ -218,13 +215,12 @@ export const consultaMedallasOro = async (peq, resp) => {
 };
 export const consultaPaisMasMedallas = async (peq, resp) => {
     try {
-        // Unimos las tres tablas y contamos las medallas por país
+
         let mostrarsql = "SELECT p.nombre AS pais, COUNT(pa.idParticipacion) AS total_medallas FROM paises p JOIN atletas a ON p.codigoISO = a.codigoISO JOIN participaciones pa ON a.idAtletas = pa.idAtleta WHERE pa.medalla IS NOT NULL GROUP BY p.nombre ORDER BY total_medallas DESC LIMIT 1";
         
         const [registros] = await bdd.query(mostrarsql);
         console.log(registros);
         
-        // Usamos una vista nueva (consulta9)
         resp.render('atletas/consulta9', { registros }); 
     } catch (error) {
         console.log(`error en la consulta 9: ${error}`);
