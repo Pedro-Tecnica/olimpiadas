@@ -129,7 +129,6 @@ export const cmenuConsultas = (peq, resp) => {
 
 export const consultaFemenino = async (peq, resp) => {
     try {
-        // WHERE genero = 'femenino' 
          let mostrarsql = "SELECT idAtletas, nombre, genero, edad, altura, peso, codigoISO FROM atletas WHERE genero = 'femenino' ORDER BY nombre ASC";
         
         const [registros] = await bdd.query(mostrarsql);
@@ -160,7 +159,6 @@ export const consultaMayores30 = async (peq, resp) => {
 };
 export const consultaPromediosGenero = async (peq, resp) => {
     try {
-        // Agrupamos por género y sacamos el promedio de altura y peso
         let mostrarsql = "SELECT genero, ROUND(AVG(altura), 2) AS prom_altura, ROUND(AVG(peso), 2) AS prom_peso FROM atletas GROUP BY genero";
         
         const [registros] = await bdd.query(mostrarsql);
@@ -176,7 +174,7 @@ export const consultaPromediosGenero = async (peq, resp) => {
 
 export const consultaTotalPorPais = async (peq, resp) => {
     try {
-        // Contamos cuántos atletas hay por cada país y ordenamos de mayor a menor
+       
         let mostrarsql = "SELECT codigoISO, COUNT(*) AS total FROM atletas GROUP BY codigoISO ORDER BY total DESC";
         
         const [registros] = await bdd.query(mostrarsql);
