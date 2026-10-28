@@ -94,9 +94,6 @@ export const modificarPais = async (peq, resp) => {
         return resp.render('paises/paisesmod',{error:"El pais ya existe."
     });
 }
-
-        
-
         const [registros] = await bdd.query(Modsql);
         console.log(registros);
         resp.render('index');

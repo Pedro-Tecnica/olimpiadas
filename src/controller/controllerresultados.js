@@ -66,7 +66,3 @@ export const modificarResultado = async (peq, resp) => {
         resp.send("Error al modificar el resultado");
     }
 }
-
-export const consresult = async (peq, resp) => {
-    resp.render('resultados/resultadoscons');
-};

@@ -231,15 +231,3 @@ export const consultaPaisMasMedallas = async (peq, resp) => {
         resp.send("Error al buscar el país con más medallas");
     }
 };
-/*export const consulta = (peq, resp) => {
-    let id = parseInt(peq.params.idhtml);
-    let consultarsql = "SELECT idAtletas, nombre, genero, edad, altura, peso, codigoISO FROM atletas WHERE idAtletas = '"+ id +"';";
-    
-    try {
-        const [registros] = await bdd.query(consultarsql);
-        console.log(registros);
-    } catch(error) {
-        console.log(`error la sentencia select ${error}`);
-    }
-};*/
-
