@@ -1,5 +1,5 @@
 import express from "express";
-import {mostrarPaises, altaPais, eliminarPais, cmodPais, modificarPais, paisesSinMedallas} from "../controller/controllerpaises.js";
+import {mostrarPaises, altaPais, eliminarPais, cmodPais, modificarPais} from "../controller/controllerpaises.js";
 
 const Rpais = express.Router();
 
@@ -10,7 +10,6 @@ Rpais.get('/paises/paisesmostrar', mostrarPaises);
 Rpais.get('/paises/paisesconsult', (req, resp) => {
     resp.render('paises/paisesconsult');
 });
-Rpais.get('/paises/sin-medallas', paisesSinMedallas);
 
 Rpais.get('/paises/paisesaltas', (req, resp) => {
     resp.render('paises/paisesaltas');});

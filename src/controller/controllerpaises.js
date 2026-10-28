@@ -1,28 +1,6 @@
 import { conectar } from "../database/conexion.js";
 const bdd = await conectar(); 
 
-export const paisesSinMedallas = async (req, resp) => {
-    try {
-        const mostrarsql = `SELECT p.codigoISO, p.nombre, p.continente
-            FROM paises p
-            WHERE NOT EXISTS (
-                SELECT 1
-                FROM atletas a
-                JOIN participaciones par ON par.idAtleta = a.idAtletas
-                WHERE a.codigoISO = p.codigoISO
-                  AND par.medalla IS NOT NULL
-                  AND par.medalla <> ''
-            )
-            ORDER BY p.nombre`;
-
-        const [registros] = await bdd.query(mostrarsql);
-        resp.render('paises/paisesSinMedallas', { registros });
-    } catch (error) {
-        console.log(`Error al consultar países sin medallas: ${error}`);
-        resp.send("Error al consultar los países sin medallas");
-    }
-};
-
 export const mostrarPaises = async (req, resp) => {
     try {
         let mostrarsql = "SELECT codigoISO, nombre, continente FROM paises order by codigoISO";
