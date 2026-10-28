@@ -78,7 +78,6 @@ export const bajaEvento = async (peq, resp) => {
         resp.render('index');
     } catch (error) {
         console.log(`error la sentencia delete ${error}`);
-        // Este mensaje salta si el evento ya tiene participaciones (Foreign Key)
         resp.send("No se puede eliminar el evento porque hay atletas participando en él.");
     }
 }
