@@ -1,6 +1,6 @@
 import express from "express";
 
-import { mostrarAtletas, altaAtleta, eliminarAtleta, modificarAtleta,cmodAtleta,cmenuConsultas,consultaFemenino,consultaMayores30,consultaPromediosGenero,consultaTotalPorPais,consultaMultiplesOros } from "../controller/controlleratletas.js"; 
+import { mostrarAtletas, altaAtleta, eliminarAtleta, modificarAtleta,cmodAtleta,cmenuConsultas,consultaFemenino,consultaMayores30,consultaPromediosGenero,consultaTotalPorPais,consultaMultiplesOros,consultaMedallasOro,consultaPaisMasMedallas } from "../controller/controlleratletas.js"; 
 
 const Ratleta = express.Router();
 
@@ -26,4 +26,6 @@ Ratleta.get('/atletas/consultamayores', consultaMayores30);
 Ratleta.get('/atletas/consulta8', consultaPromediosGenero);
 Ratleta.get('/atletas/consulta6',consultaTotalPorPais );
 Ratleta.get('/atletas/consulta10', consultaMultiplesOros);
+Ratleta.get('/atletas/consulta7', consultaMedallasOro);
+Ratleta.get('/atletas/consulta9', consultaPaisMasMedallas);
 export { Ratleta };

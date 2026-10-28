@@ -201,6 +201,36 @@ export const consultaMultiplesOros = async (peq, resp) => {
         resp.send("Error al buscar múltiples oros");
     }
 };
+export const consultaMedallasOro = async (peq, resp) => {
+    try {
+        // Unimos Atletas con Participaciones (por idAtleta) y Eventos (por idEvento)
+        let mostrarsql = "SELECT a.nombre AS atleta, p.edicion AS anio, e.nombre AS evento FROM atletas a JOIN participaciones p ON a.idAtletas = p.idAtleta JOIN eventos e ON p.idEvento = e.idEventos WHERE p.medalla = 'Oro'";
+        
+        const [registros] = await bdd.query(mostrarsql);
+        console.log(registros);
+        
+        // Usamos una vista nueva (consulta7)
+        resp.render('atletas/consulta7', { registros }); 
+    } catch (error) {
+        console.log(`error en la consulta 7: ${error}`);
+        resp.send("Error al buscar medallas de oro");
+    }
+};
+export const consultaPaisMasMedallas = async (peq, resp) => {
+    try {
+        // Unimos las tres tablas y contamos las medallas por país
+        let mostrarsql = "SELECT p.nombre AS pais, COUNT(pa.idParticipacion) AS total_medallas FROM paises p JOIN atletas a ON p.codigoISO = a.codigoISO JOIN participaciones pa ON a.idAtletas = pa.idAtleta WHERE pa.medalla IS NOT NULL GROUP BY p.nombre ORDER BY total_medallas DESC LIMIT 1";
+        
+        const [registros] = await bdd.query(mostrarsql);
+        console.log(registros);
+        
+        // Usamos una vista nueva (consulta9)
+        resp.render('atletas/consulta9', { registros }); 
+    } catch (error) {
+        console.log(`error en la consulta 9: ${error}`);
+        resp.send("Error al buscar el país con más medallas");
+    }
+};
 /*export const consulta = (peq, resp) => {
     let id = parseInt(peq.params.idhtml);
     let consultarsql = "SELECT idAtletas, nombre, genero, edad, altura, peso, codigoISO FROM atletas WHERE idAtletas = '"+ id +"';";
