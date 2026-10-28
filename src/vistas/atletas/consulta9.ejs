@@ -1,0 +1,21 @@
+<h2>País con más Medallas en Total</h2>
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>País Ganador</th>
+            <th>Total de Medallas</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% for (const fila of registros) { %>
+            <tr>
+                <td><%= fila.pais %></td>
+                <td><%= fila.total_medallas %></td>
+            </tr>
+        <% } %>
+    </tbody>
+</table>
+
+<br>
+<a href="/atletas/consultas">Volver a consultas</a>
