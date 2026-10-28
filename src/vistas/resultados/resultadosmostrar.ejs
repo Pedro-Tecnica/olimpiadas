@@ -20,8 +20,8 @@
     <thead>
         <tr>
             <th>ID</th>
-            <th>ID Atleta</th>
-            <th>ID Evento</th>
+            <th>Atleta</th>
+            <th>Evento</th>
             <th>Edición</th>
             <th>Medalla</th>
         </tr>
@@ -30,8 +30,8 @@
         <% for (const resultado of registros) { %>
             <tr>
                 <td><%= resultado.idParticipacion %></td>
-                <td><%= resultado.idAtleta %></td>
-                <td><%= resultado.idEvento %></td>
+               <td><%= resultado.nombre_atleta %></td> 
+                <td><%= resultado.nombre_evento %></td>
                 <td><%= resultado.edicion %></td>
                 <td><%= resultado.medalla %></td>
             </tr>

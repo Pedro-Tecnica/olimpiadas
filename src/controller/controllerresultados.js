@@ -11,12 +11,15 @@ export const caltaResultado = (peq, resp) => {
 
 export const cmostrarResultados = async (peq, resp) => {
     try {
-        let mostrarsql = "SELECT idParticipacion, idAtleta, idEvento, edicion, medalla FROM participaciones order by idParticipacion";
+       
+        let mostrarsql = "SELECT p.idParticipacion, a.nombre AS nombre_atleta, e.nombre AS nombre_evento, p.edicion, p.medalla FROM participaciones p JOIN atletas a ON p.idAtleta = a.idAtletas JOIN eventos e ON p.idEvento = e.idEventos ORDER BY p.idParticipacion";
+        
         const [registros] = await bdd.query(mostrarsql);
         console.log(registros);
         resp.render('resultados/resultadosmostrar', { registros });
     } catch (error) {
         console.log(error);
+        resp.send("Error al mostrar resultados");
     }
 };
 
