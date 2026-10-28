@@ -1,16 +1,18 @@
 import 'dotenv/config';
 import mysql from 'mysql2/promise'
 export async function conectar(){
+
     try{
-        const bdd= await mysql.createPool({
-            host:'localhost',
-            database:'olimpicos',
-            user:'root',
-            password:'Kapejo250830'
-        })
-        console.log('conectado')
-        return bdd;
+    const bdd = await mysql.createPool({
+        host: 'localhost',
+        database: 'olimpicos',
+        user: 'root',
+        password: 'Kapejo250830'
+    })
+    console.log('conectado');
+    return bdd;
 
     }catch(error){
-        console.log('error al conectar la base de datos')}
-}
+        console.log('Error al conectar la base de datos')}
+
+    }

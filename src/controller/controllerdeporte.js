@@ -28,6 +28,12 @@ export const altaDeporte = async (peq, resp) => {
     let Altasql = "INSERT INTO deportes (idDeportes, nombre) VALUES ('"+ id +"','"+ nombre +"');";
     
     try {
+        let validaciones = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ?\s]+$/;
+    if (!validaciones.test(nombre)) {
+        return resp.render('atletas/atletasaltas',{error:"Los nombres no pueden contener: Puntos, comas, guiones o numeros."
+            })
+    }
+
     const [ids] =await bdd.query("SELECT * FROM deportes WHERE idDeportes = ?", [id]);
     if(ids.length > 0){
     return resp.render('deportes/deportesaltas',{error:"El id ya existe."
@@ -94,6 +100,12 @@ export const modificarDeporte = async (peq, resp) => {
         return resp.render('deportes/deportesmod',{error:"El deporte ya existe."
     });
 }
+
+        let validaciones = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ?\s]+$/;
+        if (!validaciones.test(nombre)) {
+        return resp.render('deportes/deportesaltas',{error:"Los nombres no pueden contener: Puntos, comas, guiones o numeros."
+            });
+    }
 
 
         const [registros] = await bdd.query(Modsql);

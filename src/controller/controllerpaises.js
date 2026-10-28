@@ -90,6 +90,8 @@ export const modificarPais = async (peq, resp) => {
     });
 }
 
+        
+
         const [registros] = await bdd.query(Modsql);
         console.log(registros);
         resp.render('index');

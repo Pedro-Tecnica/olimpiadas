@@ -32,6 +32,7 @@ export const altaResultado = async (peq, resp) => {
     let Altasql = "INSERT INTO participaciones (idParticipacion, idAtleta, idEvento, edicion, medalla) VALUES ('"+ id +"','"+ atleta +"','"+ evento +"','"+ edicion +"','"+ medalla +"');";
     
     try {
+        
         const [registros] = await bdd.query(Altasql);
         console.log(registros);
         resp.render('index');
