@@ -1,0 +1,23 @@
+<h1>Eventos Registrados</h1>
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Evento</th>
+            <th>Deporte</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% for (const evento of registros) { %>
+            <tr>
+                <td><%= evento.idEventos %></td>
+                <td><%= evento.nombre %></td>
+                <td><%= evento.deporte %></td>
+            </tr>
+        <% } %>
+    </tbody>
+</table>
+
+<br>
+<a href="/eventos">Volver a eventos</a>
