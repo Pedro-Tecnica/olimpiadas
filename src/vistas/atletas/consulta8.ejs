@@ -1,0 +1,23 @@
+<h2>Promedios de Altura y Peso por Género</h2>
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>Género</th>
+            <th>Promedio Altura (m)</th>
+            <th>Promedio Peso (kg)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% for (const fila of registros) { %>
+            <tr>
+                <td><%= fila.genero %></td>
+                <td><%= fila.prom_altura %></td>
+                <td><%= fila.prom_peso %></td>
+            </tr>
+        <% } %>
+    </tbody>
+</table>
+
+<br>
+<a href="/atletas/consultas">Volver a consultas</a>

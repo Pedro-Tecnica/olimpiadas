@@ -155,6 +155,23 @@ export const consultaMayores30 = async (peq, resp) => {
     } catch (error) {
         console.log(error);
     }
+
+    
+};
+export const consultaPromediosGenero = async (peq, resp) => {
+    try {
+        // Agrupamos por género y sacamos el promedio de altura y peso
+        let mostrarsql = "SELECT genero, ROUND(AVG(altura), 2) AS prom_altura, ROUND(AVG(peso), 2) AS prom_peso FROM atletas GROUP BY genero";
+        
+        const [registros] = await bdd.query(mostrarsql);
+        console.log(registros);
+        
+
+        resp.render('atletas/consulta8', { registros }); 
+    } catch (error) {
+        console.log(`error en la consulta 8: ${error}`);
+        resp.send("Error al calcular promedios");
+    }
 };
 /*export const consulta = (peq, resp) => {
     let id = parseInt(peq.params.idhtml);
