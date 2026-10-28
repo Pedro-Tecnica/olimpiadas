@@ -40,3 +40,45 @@ export const mostrarEventos = async (peq, resp) => {
         console.log(error);
     }
 };
+// --- MODIFICAR ---
+export const cmodEvento = (peq, resp) => {
+    resp.render('eventos/eventosmod');
+};
+
+export const modificarEvento = async (peq, resp) => {
+    let id = peq.body.idhtml;
+    let nombre = peq.body.nombrehtml;
+    let deporte = peq.body.deportehtml;
+
+    let Modsql = "UPDATE eventos SET nombre='"+ nombre +"', idDeportes='"+ deporte +"' WHERE idEventos='"+ id +"';";
+    
+    try {
+        const [registros] = await bdd.query(Modsql);
+        console.log(registros);
+        resp.render('index');
+    } catch (error) {
+        console.log(`error la sentencia update ${error}`);
+        resp.send("Error al modificar. Fijate si el ID del evento o del deporte existen.");
+    }
+}
+
+// --- ELIMINAR ---
+export const cbajaEvento = (peq, resp) => {
+    resp.render('eventos/eventoeliminar');
+};
+
+export const bajaEvento = async (peq, resp) => {
+    let id = peq.body.idhtml;
+
+    let Bajasql = "DELETE FROM eventos WHERE idEventos='"+ id +"';";
+    
+    try {
+        const [registros] = await bdd.query(Bajasql);
+        console.log(registros);
+        resp.render('index');
+    } catch (error) {
+        console.log(`error la sentencia delete ${error}`);
+        // Este mensaje salta si el evento ya tiene participaciones (Foreign Key)
+        resp.send("No se puede eliminar el evento porque hay atletas participando en él.");
+    }
+}
