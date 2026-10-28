@@ -173,6 +173,34 @@ export const consultaPromediosGenero = async (peq, resp) => {
         resp.send("Error al calcular promedios");
     }
 };
+
+export const consultaTotalPorPais = async (peq, resp) => {
+    try {
+        // Contamos cuántos atletas hay por cada país y ordenamos de mayor a menor
+        let mostrarsql = "SELECT codigoISO, COUNT(*) AS total FROM atletas GROUP BY codigoISO ORDER BY total DESC";
+        
+        const [registros] = await bdd.query(mostrarsql);
+        resp.render('atletas/consulta6', { registros }); 
+    } catch (error) {
+        console.log(error);
+    }
+};
+export const consultaMultiplesOros = async (peq, resp) => {
+    try {
+        // Agrupamos por atleta y edición.
+        // HAVING COUNT(...) > 1 significa: "Solo mostrame los que ganaron más de 1 oro".
+        let mostrarsql = "SELECT a.nombre AS atleta, p.edicion, COUNT(p.idParticipacion) AS cantidad_oros FROM atletas a JOIN participaciones p ON a.idAtletas = p.idAtleta WHERE p.medalla = 'Oro' GROUP BY a.idAtletas, p.edicion HAVING COUNT(p.idParticipacion) > 1";
+        
+        const [registros] = await bdd.query(mostrarsql);
+        console.log(registros);
+        
+        // Usamos una vista nueva (consulta10)
+        resp.render('atletas/consulta10', { registros }); 
+    } catch (error) {
+        console.log(`error en la consulta 10: ${error}`);
+        resp.send("Error al buscar múltiples oros");
+    }
+};
 /*export const consulta = (peq, resp) => {
     let id = parseInt(peq.params.idhtml);
     let consultarsql = "SELECT idAtletas, nombre, genero, edad, altura, peso, codigoISO FROM atletas WHERE idAtletas = '"+ id +"';";

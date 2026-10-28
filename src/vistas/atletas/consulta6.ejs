@@ -1,0 +1,19 @@
+<h2>Total de Atletas por País</h2>
+<table border="1">
+    <thead>
+        <tr>
+            <th>Código de País</th>
+            <th>Total de Atletas</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% for (const fila of registros) { %>
+            <tr>
+                <td><%= fila.codigoISO %></td>
+                <td><%= fila.total %></td>
+            </tr>
+        <% } %>
+    </tbody>
+</table>
+<br>
+<a href="/atletas/consultas">Volver a consultas</a>

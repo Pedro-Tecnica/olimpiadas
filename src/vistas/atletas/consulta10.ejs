@@ -1,0 +1,23 @@
+<h2>Atletas con más de un Oro en la misma Edición</h2>
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>Atleta</th>
+            <th>Edición</th>
+            <th>Cantidad de Oros</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% for (const fila of registros) { %>
+            <tr>
+                <td><%= fila.atleta %></td>
+                <td><%= fila.edicion %></td>
+                <td><%= fila.cantidad_oros %></td>
+            </tr>
+        <% } %>
+    </tbody>
+</table>
+
+<br>
+<a href="/atletas/consultas">Volver a consultas</a>
