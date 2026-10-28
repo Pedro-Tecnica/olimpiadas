@@ -37,7 +37,7 @@ if(pais.length > 3 || pais.length <= 2){
     let validaciones = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ?\s]+$/;
     if (!validaciones.test(nombre)) {
         return resp.render('atletas/atletasaltas',{error:"Los nombres no pueden contener: Puntos, comas, guiones o numeros."
-            })
+            });
     }
 
     const [paises] =await bdd.query("SELECT * FROM paises WHERE codigoISO = ?", [pais]);
@@ -154,6 +154,23 @@ export const consultaMayores30 = async (peq, resp) => {
         resp.render('atletas/atletasmostrar', { registros }); 
     } catch (error) {
         console.log(error);
+    }
+
+    
+};
+export const consultaPromediosGenero = async (peq, resp) => {
+    try {
+        // Agrupamos por género y sacamos el promedio de altura y peso
+        let mostrarsql = "SELECT genero, ROUND(AVG(altura), 2) AS prom_altura, ROUND(AVG(peso), 2) AS prom_peso FROM atletas GROUP BY genero";
+        
+        const [registros] = await bdd.query(mostrarsql);
+        console.log(registros);
+        
+
+        resp.render('atletas/consulta8', { registros }); 
+    } catch (error) {
+        console.log(`error en la consulta 8: ${error}`);
+        resp.send("Error al calcular promedios");
     }
 };
 /*export const consulta = (peq, resp) => {
