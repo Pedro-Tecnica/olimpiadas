@@ -66,4 +66,25 @@ export const modificarResultado = async (peq, resp) => {
 
 export const consresult = async (peq, resp) => {
     resp.render('resultados/resultadoscons');
-}
+};
+
+export const consultaEventoMasParticipantes = async (req, resp) => {
+    try {
+        const consulta = `SELECT e.nombre AS evento, p.edicion, COUNT(DISTINCT p.idAtleta) AS participantes
+            FROM participaciones p
+            JOIN eventos e ON e.idEventos = p.idEvento
+            WHERE CAST(REGEXP_SUBSTR(p.edicion, '[0-9]{4}') AS UNSIGNED) = (
+                SELECT MAX(CAST(REGEXP_SUBSTR(edicion, '[0-9]{4}') AS UNSIGNED))
+                FROM participaciones
+            )
+            GROUP BY e.idEventos, e.nombre, p.edicion
+            ORDER BY participantes DESC
+            LIMIT 1`;
+
+        const [registros] = await bdd.query(consulta);
+        resp.render('resultados/consultaMayorEvento', { registros });
+    } catch (error) {
+        console.log(`Error al consultar el evento con más participantes: ${error}`);
+        resp.send("Error al consultar el evento con más participantes");
+    }
+};

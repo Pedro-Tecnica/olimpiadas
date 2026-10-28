@@ -7,6 +7,9 @@ Rpais.get('/paises', (req, resp) => {
     resp.render('paises/paises'); });
 
 Rpais.get('/paises/paisesmostrar', mostrarPaises);
+Rpais.get('/paises/paisesconsult', (req, resp) => {
+    resp.render('paises/paisesconsult');
+});
 Rpais.get('/paises/sin-medallas', paisesSinMedallas);
 
 Rpais.get('/paises/paisesaltas', (req, resp) => {
