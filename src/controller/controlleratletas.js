@@ -130,6 +130,7 @@ export const cmenuConsultas = (peq, resp) => {
 
 export const consultaFemenino = async (peq, resp) => {
     try {
+     
          let mostrarsql = "SELECT idAtletas, nombre, genero, edad, altura, peso, codigoISO FROM atletas WHERE genero = 'femenino' ORDER BY nombre ASC";
         
         const [registros] = await bdd.query(mostrarsql);
