@@ -108,3 +108,9 @@ a{
     color: inherit;
     text-decoration: none;
 }
+
+.texton{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
