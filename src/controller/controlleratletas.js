@@ -1,6 +1,7 @@
 import { conectar } from "../database/conexion.js";
 const bdd = await conectar();
 export const mostrarAtletas = async (peq, resp) => {
+    
     try {
         let mostrarsql = "SELECT idAtletas, nombre, genero, edad, altura, peso, codigoISO FROM atletas order by idAtletas";
         const [registros] = await bdd.query(mostrarsql);
