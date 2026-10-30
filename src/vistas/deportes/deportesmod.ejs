@@ -16,7 +16,7 @@
 
 <h1>Modificar Deporte</h1>
 <a href="/deportes">Volver a deportes</a><br><br>
-
+<div class="formu">
 <form action="/deportes/modificar" method="POST">
     <label>ID del Deporte a modificar:</label>
     <input type="number" name="idhtml" required><br><br>
@@ -26,7 +26,7 @@
 
     <button type="submit">Modificar Deporte</button>
 </form>
-
+</div>
 
 <% if (typeof error !== 'undefined') {%>
     <%= error %>

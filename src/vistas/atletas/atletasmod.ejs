@@ -17,7 +17,7 @@
 <h1>Modificar Atleta</h1>
 <a href="/atletas">Volver a atletas</a>
 <br><br>
-
+<div class="formu">
 <form action="/atletas/modificar" method="POST">
     <label>ID del Atleta:</label>
     <input type="number" name="idhtml" required><br><br>
@@ -25,6 +25,7 @@
     <label>Nuevo Nombre:</label>
     <input type="text" name="nomhtml" required><br><br>
 
+    <label>Genero:</label>
    <select name="generohtml" required>
     <option value="" disabled selected>Seleccione un género</option>
     <option value="masculino">Masculino</option>
@@ -46,7 +47,7 @@
 
     <button type="submit">Modificar Atleta</button>
 </form>
-
+</div>
 <% if (typeof error !== 'undefined') {%>
     <%= error %>
 

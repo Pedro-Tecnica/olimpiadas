@@ -18,7 +18,7 @@
 <a href="/paises">Volver a paises</a>
 
 <br><br>
-
+<div class="formu">
 <form action="/paises/paisesaltas" method="POST">
     <label>País (Código ISO de 3 letras):</label>
     <input type="text" name="isohtml" placeholder="Ej: ARG" required><br><br>
@@ -32,6 +32,7 @@
     
     <button type="submit">Guardar País</button>
 </form>
+</div>
 
 <% if (typeof error !== 'undefined') {%>
     <%= error %>
