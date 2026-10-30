@@ -66,3 +66,20 @@ export const modificarResultado = async (peq, resp) => {
         resp.send("Error al modificar el resultado");
     }
 }
+export const buscarParticipacionesAtleta = async (peq, resp) => {
+    let idAtleta = peq.body.idhtml;
+
+    try {
+        
+        let buscarsql = "SELECT a.nombre AS atleta, e.nombre AS evento, p.edicion, p.medalla FROM participaciones p JOIN atletas a ON p.idAtleta = a.idAtletas JOIN eventos e ON p.idEvento = e.idEventos WHERE a.idAtletas = ?";
+        
+        const [registros] = await bdd.query(buscarsql, [idAtleta]);
+        console.log(registros);
+     
+        resp.render('resultados/buscaratleta', { registros, idAtleta }); 
+        
+    } catch (error) {
+        console.log(`error en la búsqueda: ${error}`);
+        resp.send("Error al buscar las participaciones del atleta");
+    }
+};
