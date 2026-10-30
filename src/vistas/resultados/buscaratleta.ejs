@@ -1,0 +1,43 @@
+<h1>Buscar Participaciones de un Atleta</h1>
+<a href="/resultados">Volver a resultados</a>
+<br><br>
+
+<form action="/resultado/buscaratleta" method="POST">
+    <label>Ingresá el ID del Atleta:</label>
+    <input type="number" name="idhtml" required>
+    <button type="submit">Buscar</button>
+</form>
+
+<hr>
+
+<% if (typeof registros !== 'undefined') { %>
+    
+    <h2>Resultados para el Atleta ID: <%= idAtleta %></h2>
+
+    <% if (registros.length > 0) { %>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Atleta</th>
+                    <th>Evento</th>
+                    <th>Edición</th>
+                    <th>Medalla</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for (const fila of registros) { %>
+                    <tr>
+                        <td><%= fila.atleta %></td>
+                        <td><%= fila.evento %></td>
+                        <td><%= fila.edicion %></td>
+                        <!-- Si no tiene medalla, mostramos "Sin medalla" -->
+                        <td><%= fila.medalla ? fila.medalla : 'Sin medalla' %></td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+    <% } else { %>
+        <p style="color: red;">No se encontraron participaciones para ese atleta.</p>
+    <% } %>
+
+<% } %>
