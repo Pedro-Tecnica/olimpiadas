@@ -18,7 +18,7 @@
 <a href="/atletas">Volver a atletas</a>
 
 <br><br>
-
+<div class="formu">
 <form action="/atletas/altasalta" method="POST">
     <label>ID:</label>
     <input type="number" name="idhtml" required><br><br>
@@ -43,7 +43,7 @@
     
     <button type="submit">Guardar Atleta</button>
 </form>
-
+</div>
 <% if (typeof error !== 'undefined') {%>
     <%= error %>
 
