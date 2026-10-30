@@ -69,3 +69,14 @@ th{
     color: white;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+.formu{
+    text-align: center;
+    justify-content: center;
+    width: 50%;
+    background-color: blueviolet;
+}
+
+
+button{
+    height: 29px;
+}
